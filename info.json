@@ -5,7 +5,7 @@
     "author": "binaryDiv",
     "contact": "factorio@binarydiv.dev",
     "homepage": "https://github.com/binaryDiv/factorio-hide-military-tech",
-    "description": "Hides military technologies and recipes that aren't useful when playing without enemies.",
+    "description": "Hides military technologies and items that aren't useful when playing without enemies.",
     "factorio_version": "2.0",
     "dependencies": [
         "base >= 2.0",
