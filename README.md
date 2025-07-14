@@ -19,7 +19,7 @@ Technologies that you have already researched will be hidden as well, but they w
 
 In other words, the mod does not alter the gameplay in any way, it only removes "clutter" from the technology tree, crafting menu and Factoriopedia.
 
-If you are looking for a more immersive experience, I highly recommend to check out [Pacifist](https://mods.factorio.com/mod/Pacifist) instead, which will remove enemies and combat technologies from the game completely, as well as altering the technology tree and recipes accordingly. (Currently, Space Age support in Pacifist is not implemented yet, but it's work in progress!)
+If you are looking for a more immersive experience, I highly recommend to check out [Pacifist](https://mods.factorio.com/mod/Pacifist) instead, which will remove enemies and combat technologies from the game completely, as well as altering the technology tree and recipes accordingly.
 
 ## Usage
 
