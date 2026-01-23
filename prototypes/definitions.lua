@@ -45,13 +45,16 @@ definitions.artillery = {
 }
 
 -- Tesla weapons (turret and handheld gun)
--- NOTE: "electric-weapons-damage-#" is contained in combat_robots because it depends on the Destroyer technology.
+-- NOTE: "electric-weapons-damage-{1,2}" are contained in combat_robots because they only affect the Destroyer.
+-- The prerequisite for "electric-weapons-damage-3" to its previous level will be removed.
 definitions.tesla_weapons = {
     technology = { "tesla-weapons" },
     recipe = {
         "teslagun",
         "tesla-ammo",
         "tesla-turret",
+        "electric-weapons-damage-3",
+        "electric-weapons-damage-4",
     },
 
     -- Items
@@ -73,7 +76,8 @@ definitions.combat_robots = {
         "distractor",
         "destroyer",
         "follower-robot-count-#",
-        "electric-weapons-damage-#",
+        "electric-weapons-damage-1",
+        "electric-weapons-damage-2",
     },
     recipe = {
         "defender-capsule",

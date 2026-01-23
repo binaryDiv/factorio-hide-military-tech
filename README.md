@@ -34,7 +34,6 @@ The following technologies and recipes will *always* be hidden (unless "Override
 - Land mine
 - Atomic bomb
 - Artillery: Artillery turret and wagon
-- Tesla weapons: Tesla turret and handheld tesla gun
 - Combat robots: Defender, distractor, destroyer
     - This includes the "Follower robot count" and "Electric weapons damage" upgrades.
 - Combat equipment: Discharge defense and personal laser defense
@@ -46,6 +45,7 @@ Additionally, there are settings for the following technologies, recipes and ite
 - Flamethrower: Flamethrower turret, flamethrower gun and ammo (default: hidden)
 - Laser turret (default: visible)
     - This includes the "Laser" base technology, since all other technologies depending on it are always hidden.
+- Tesla weapons: Tesla turret and handheld tesla gun (default: hidden)
 - Tank (default: visible)
     - Tank cannon shells are always hidden, though.
 - Uranium ammo (default: hidden)

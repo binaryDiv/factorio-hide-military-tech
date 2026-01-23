@@ -18,9 +18,10 @@ data:extend({
     -- Technologies (and everything unlocked by them)
     generate_startup_bool_setting("hide-flamethrower", "b[hide-techs]-a[flamethrower]", true),
     generate_startup_bool_setting("hide-laser-turret", "b[hide-techs]-b[laser-turret]", false),
-    generate_startup_bool_setting("hide-tank", "b[hide-techs]-c[tank]", false),
-    generate_startup_bool_setting("hide-uranium-ammo", "b[hide-techs]-d[uranium-ammo]", true),
-    generate_startup_bool_setting("hide-health-upgrades", "b[hide-techs]-e[health-upgrades]", false),
+    generate_startup_bool_setting("hide-tesla-weapons", "b[hide-techs]-c[tesla-weapons]", true),
+    generate_startup_bool_setting("hide-tank", "b[hide-techs]-d[tank]", false),
+    generate_startup_bool_setting("hide-uranium-ammo", "b[hide-techs]-e[uranium-ammo]", true),
+    generate_startup_bool_setting("hide-health-upgrades", "b[hide-techs]-f[health-upgrades]", false),
 
     -- Recipes and items (that are part of necessary technologies)
     generate_startup_bool_setting("hide-early-armor", "c[hide-items]-a[early-armor]", false),

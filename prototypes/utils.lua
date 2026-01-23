@@ -58,4 +58,36 @@ function utils.hide_prototypes(prototype_groups)
     end
 end
 
+-- Add a prerequisite to a technology
+function utils.add_tech_prerequisite(tech_name, prerequisite)
+    local tech = data.raw.technology[tech_name]
+
+    if tech and data.raw.technology[prerequisite] then
+        tech.prerequisites = tech.prerequisites or {}
+
+        -- Check if prerequisite already exists
+        for _, item in pairs(tech.prerequisites) do
+            if item == prerequisite then
+                return
+            end
+        end
+
+        table.insert(tech.prerequisites, prerequisite)
+    end
+end
+
+-- Remove a prerequisite from a technology if it exists
+function utils.remove_tech_prerequisite(tech_name, prerequisite)
+    local tech = data.raw.technology[tech_name]
+
+    if tech and tech.prerequisites then
+        for index, item in pairs(tech.prerequisites or {}) do
+            if item == prerequisite then
+                table.remove(tech.prerequisites, index)
+                return
+            end
+        end
+    end
+end
+
 return utils

@@ -11,7 +11,18 @@ utils.hide_prototypes(definitions.atomic_bomb)
 utils.hide_prototypes(definitions.artillery)
 
 -- Tesla weapons: Ineffective against asteroids
-utils.hide_prototypes(definitions.tesla_weapons)
+-- Optional, because there's mods that make them effective against asteroids. And tesla turrets are cool.
+if utils.get_setting("hide-tesla-weapons") then
+    utils.hide_prototypes(definitions.tesla_weapons)
+else
+    -- "electric-weapons-damage-{1,2}" only affect combat robots/equipment, but levels 3+ increase tesla damage as well.
+    -- We're removing level 2 from the prerequisites, otherwise we couldn't hide the combat robots and the player would
+    -- have to research a lot of unnecessary stuff.
+    utils.remove_tech_prerequisite("electric-weapons-damage-3", "electric-weapons-damage-2")
+
+    -- The tech should already depend on the tesla-weapons technology, but let's be safe in case a mod changes that.
+    utils.add_tech_prerequisite("electric-weapons-damage-3", "tesla-weapons")
+end
 
 -- Combat robots: Useless without enemies
 utils.hide_prototypes(definitions.combat_robots)
