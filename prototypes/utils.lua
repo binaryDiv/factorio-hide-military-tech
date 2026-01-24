@@ -5,24 +5,42 @@ function utils.get_setting(name)
     return settings.startup["hide-military-tech-" .. name].value
 end
 
--- Hide a technology (ignores names that don't exist and resolves upgradable technologies)
-function utils.hide_technology(name)
+-- Return a list of all technology prototypes matching the given name. If the name ends with "-#", find all technologies
+-- with "#" replaced by a number counting upwards (e.g. "weapon-shooting-speed-1", "-2", "-3", ...).
+-- If its a regular technology name, return a list with only that technology, or an empty list if it doesn't exist.
+function utils.resolve_technology_name(name)
     local technologies = data.raw["technology"]
 
-    -- Handle upgradable technologies (e.g. "follower-robot-count-#" for "follower-robot-count-1", "...-2", etc.)
     if name:sub(-2) == "-#" then
-        -- Convert string to a pattern to match "prefix-NUMBER": First, replace "-" with "%-" because "-" is a
-        -- magic character in Lua patterns. Then, replace the "#" at the end with "%d+" which matches numbers.
-        local pattern = name:gsub("%-", "%%-"):gsub("#$", "%%d+")
+        local matches = {}
+        local prefix = name:sub(1, -2)
 
-        -- Find and hide all matching technologies
-        for tech_name, tech in pairs(technologies) do
-            if tech_name:match(pattern) then
-                tech.hidden = true
+        -- It's safe to assume that there won't be 100 levels of a technology
+        for i = 1, 100 do
+            local tech = technologies[prefix .. i]
+            if tech ~= nil then
+                table.insert(matches, tech)
+            else
+                break
             end
         end
+        return matches
     elseif technologies[name] ~= nil then
-        technologies[name].hidden = true
+        return { technologies[name] }
+    else
+        return {}
+    end
+end
+
+-- Hide effect of a technology (e.g. weapon damage upgrades)
+function utils.hide_technology_effect(tech_name, effect_type, effect_subject)
+    -- Handle upgradable technologies (e.g. "weapon-shooting-speed-#", replacing "#" with 1, 2, ...)
+    for _, tech in pairs(utils.resolve_technology_name(tech_name)) do
+        for _, tech_effect in pairs(tech.effects or {}) do
+            if tech_effect.type == effect_type and tech_effect.ammo_category == effect_subject then
+                tech_effect.hidden = true
+            end
+        end
     end
 end
 
@@ -30,7 +48,10 @@ end
 function utils.hide_prototype(type, name)
     -- Special handling for technologies
     if type == "technology" then
-        utils.hide_technology(name)
+        -- Handle upgradable technologies (e.g. "weapon-shooting-speed-#", replacing "#" with 1, 2, ...)
+        for _, tech in pairs(utils.resolve_technology_name(name)) do
+            tech.hidden = true
+        end
         return
     end
 
@@ -48,12 +69,20 @@ end
 -- For technologies, you can use the special syntax "example-#" to mean all technologies that start with "example-"
 -- followed by a number.
 function utils.hide_prototypes(prototype_groups)
-    for type, names in pairs(prototype_groups) do
-        -- Replace underscores with dashes to allow easier table definitions
-        type = type:gsub("_", "-")
+    for type, items in pairs(prototype_groups) do
+        -- Special case: Hide technology effects, e.g. weapon damage upgrades
+        if type == "technology_effect" then
+            for _, item in pairs(items) do
+                -- Items are tuples of technology name, effect type, effect name/subject (e.g. ammo category)
+                utils.hide_technology_effect(item[1], item[2], item[3])
+            end
+        else
+            -- Replace underscores with dashes to allow easier table definitions
+            type = type:gsub("_", "-")
 
-        for _, name in pairs(names) do
-            utils.hide_prototype(type, name)
+            for _, name in pairs(items) do
+                utils.hide_prototype(type, name)
+            end
         end
     end
 end

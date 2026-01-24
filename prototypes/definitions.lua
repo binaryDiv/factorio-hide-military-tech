@@ -7,6 +7,11 @@ definitions.land_mine = {
     item = { "land-mine" },
     land_mine = { "land-mine" },
     ammo_category = { "landmine" },
+
+    -- Technology effects (damage upgrades)
+    technology_effect = {
+        { "stronger-explosives-#", "ammo-damage", "landmine" },
+    },
 }
 
 -- Atomic bomb
@@ -101,6 +106,11 @@ definitions.combat_robots = {
 
     -- Ammo category: Only used by Destroyer
     ammo_category = { "beam" },
+
+    -- Technology effects (damage/speed upgrades)
+    technology_effect = {
+        { "electric-weapons-damage-#", "ammo-damage", "beam" },
+    },
 }
 
 -- Laser-based armor equipment: Discharge defense
@@ -114,6 +124,11 @@ definitions.discharge_defense = {
 
     -- Ammo category: Only used by Discharge defense
     ammo_category = { "electric" },
+
+    -- Technology effects (damage/speed upgrades)
+    technology_effect = {
+        { "electric-weapons-damage-#", "ammo-damage", "electric" },
+    },
 }
 
 -- Laser-based armor equipment: Personal laser defense
@@ -207,6 +222,12 @@ definitions.cannon_shells = {
 
     -- Ammo category: Only used for the ammo types defined above (which are only used by tanks)
     ammo_category = { "cannon-shell" },
+
+    -- Technology effects (damage/speed upgrades)
+    technology_effect = {
+        { "physical-projectile-damage-#", "ammo-damage", "cannon-shell" },
+        { "weapon-shooting-speed-#", "gun-speed", "cannon-shell" },
+    },
 }
 
 -- Uranium ammo
@@ -261,6 +282,12 @@ definitions.shotguns = {
 
     -- Ammo category: Only used by shotguns
     ammo_category = { "shotgun-shell" },
+
+    -- Technology effects (damage/speed upgrades)
+    technology_effect = {
+        { "physical-projectile-damage-#", "ammo-damage", "shotgun-shell" },
+        { "weapon-shooting-speed-#", "gun-speed", "shotgun-shell" },
+    },
 }
 
 -- Cluster grenade (unlocked by Military 4)
