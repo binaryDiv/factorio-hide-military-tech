@@ -14,14 +14,6 @@ utils.hide_prototypes(definitions.artillery)
 -- Optional, because there's mods that make them effective against asteroids. And tesla turrets are cool.
 if utils.get_setting("hide-tesla-weapons") then
     utils.hide_prototypes(definitions.tesla_weapons)
-else
-    -- "electric-weapons-damage-{1,2}" only affect combat robots/equipment, but levels 3+ increase tesla damage as well.
-    -- We're removing level 2 from the prerequisites, otherwise we couldn't hide the combat robots and the player would
-    -- have to research a lot of unnecessary stuff.
-    utils.remove_tech_prerequisite("electric-weapons-damage-3", "electric-weapons-damage-2")
-
-    -- The tech should already depend on the tesla-weapons technology, but let's be safe in case a mod changes that.
-    utils.add_tech_prerequisite("electric-weapons-damage-3", "tesla-weapons")
 end
 
 -- Combat robots: Useless without enemies
@@ -46,11 +38,6 @@ end
 -- By default, laser turrets will be visible. But some players might want to disable them.
 if utils.get_setting("hide-laser-turret") then
     utils.hide_prototypes(definitions.laser_turret)
-else
-    -- "laser-shooting-speed-#" and "laser-weapons-damage-#" depend on the "Laser" base technology, but only make sense
-    -- if the laser turret has been researched already.
-    utils.add_tech_prerequisite("laser-shooting-speed-1", "laser-turret")
-    utils.add_tech_prerequisite("laser-weapons-damage-1", "laser-turret")
 end
 
 -- Tanks can be a useful vehicle even without their weapons: They are remote-controllable (unlike cars), they can plow
@@ -86,6 +73,7 @@ if utils.get_setting("hide-early-armor") then
 end
 
 -- Optionally hide advanced weapons. Hidden by default, but players might want to have them.
+
 if utils.get_setting("hide-submachine-gun") then
     utils.hide_prototypes(definitions.submachine_gun)
 end
