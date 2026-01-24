@@ -1,5 +1,4 @@
 local utils = require("prototypes.utils")
-
 local setting_remove_vehicle_guns = utils.get_setting("remove-vehicle-guns")
 
 -- Stop if no guns should be removed
