@@ -70,12 +70,12 @@ utils.hide_prototypes(definitions.cannon_shells)
 -- Uranium cannon shells will always be hidden (because normal cannon shells are hidden as well).
 -- NOTE: Enabling uranium ammo will automatically enable tanks, because the technology depends on it.
 if utils.get_setting("hide-uranium-ammo") then
-    utils.hide_prototypes (definitions.uranium_ammo)
+    utils.hide_prototypes(definitions.uranium_ammo)
 end
 
 -- Health upgrades can help to reduce damage, e.g. by lightning on Fulgora or by mistargeted attacks against trees.
 if utils.get_setting("hide-health-upgrades") then
-    utils.hide_prototypes (definitions.health)
+    utils.hide_prototypes(definitions.health)
 end
 
 -- Optionally hide light and heavy armor. These don't have equipment grids, so they aren't really useful.

@@ -72,6 +72,11 @@ The following technologies and recipes are explicitly **never** hidden:
 
 The mod uses hardcoded lists of prototype names, which means that it will **not** automatically hide any technology or item added by other mods. It will check for the existence of prototypes before accessing them, so there shouldn't be any crash if another mod removes something that would be hidden by this mod.
 
+Currently, there is explicit support for:
+
+- [AAI Vehicles: Warden](https://mods.factorio.com/mod/aai-vehicles-warden): Hide electro bolter ammo.
+- [AAI Vehicles: Ironclad](https://mods.factorio.com/mod/aai-vehicles-ironclad): Hide mortar bombs.
+
 If you encounter any mod incompatibilities, or would like to have options to hide technologies or recipes added by a specific mod, feel free to reach out. However, I can't promise that I'll add support for every mod.
 
 ## Support
