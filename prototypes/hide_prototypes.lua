@@ -46,6 +46,11 @@ end
 -- By default, laser turrets will be visible. But some players might want to disable them.
 if utils.get_setting("hide-laser-turret") then
     utils.hide_prototypes(definitions.laser_turret)
+else
+    -- "laser-shooting-speed-#" and "laser-weapons-damage-#" depend on the "Laser" base technology, but only make sense
+    -- if the laser turret has been researched already.
+    utils.add_tech_prerequisite("laser-shooting-speed-1", "laser-turret")
+    utils.add_tech_prerequisite("laser-weapons-damage-1", "laser-turret")
 end
 
 -- Tanks can be a useful vehicle even without their weapons: They are remote-controllable (unlike cars), they can plow
