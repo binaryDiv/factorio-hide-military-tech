@@ -1,4 +1,4 @@
-# Factorio Mod: Hide Unused Military Technologies
+# Factorio Mod: Hide Military Technologies
 
 Factorio mod that hides military technologies and items that aren't useful when playing without enemies. 
 
