@@ -26,8 +26,10 @@ for _, tech in pairs(technologies) do
 end
 
 -- Hide military science pack technology, item and recipe
-utils.hide_prototypes({
-    technology = { "military-science-pack" },
-    recipe = { "military-science-pack" },
-    item = { "military-science-pack" },
-})
+if not utils.get_setting("override-show-all") then
+    utils.hide_prototypes({
+        technology = { "military-science-pack" },
+        recipe = { "military-science-pack" },
+        item = { "military-science-pack" },
+    })
+end

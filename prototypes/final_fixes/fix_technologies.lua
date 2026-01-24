@@ -10,6 +10,11 @@ if not utils.get_setting("hide-tesla-weapons") then
 
     -- The tech should already depend on the tesla-weapons technology, but let's be safe in case a mod changes that.
     utils.add_tech_prerequisite("electric-weapons-damage-3", "tesla-weapons")
+
+    -- Set upgrade=false, otherwise the tech won't be visible with "override-show-all" unless level 1+2 is researched.
+    if data.raw.technology["electric-weapons-damage-3"] then
+        data.raw.technology["electric-weapons-damage-3"].upgrade = false
+    end
 end
 
 -- Laser turrets: Fix prerequisites for shooting speed and weapons damage upgrades
