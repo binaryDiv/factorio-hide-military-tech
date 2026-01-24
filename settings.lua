@@ -30,12 +30,15 @@ data:extend({
     generate_startup_bool_setting("hide-cluster-grenade", "c[hide-items]-d[cluster-grenade]", true),
     generate_startup_bool_setting("hide-handheld-railgun", "c[hide-items]-e[handheld-railgun]", true),
 
+    -- Whether to remove the military science pack (from technologies and from the tech tree)
+    generate_startup_bool_setting("remove-military-science-pack", "d[misc]-a[remove-military-science-pack]", false),
+
     -- Whether to remove guns from vehicles (options: none, only those with hidden ammo, all guns)
     {
         setting_type = "startup",
         type = "string-setting",
         name = "hide-military-tech-remove-vehicle-guns",
-        order = "d[misc]-a[remove-vehicle-guns]",
+        order = "d[misc]-b[remove-vehicle-guns]",
         allowed_values = {"no", "hidden", "all"},
         default_value = "no",
     },

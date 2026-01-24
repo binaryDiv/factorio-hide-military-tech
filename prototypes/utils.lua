@@ -5,12 +5,21 @@ function utils.get_setting(name)
     return settings.startup["hide-military-tech-" .. name].value
 end
 
--- Removes a value from a table (only once!)
+-- Remove a value from a table (only once!)
 function utils.table_remove_value(which_table, value)
     for k, v in pairs(which_table) do
         if v == value then
             table.remove(which_table, k)
             return
+        end
+    end
+end
+
+-- Replace a value from a table with a different one (only once!)
+function utils.table_replace_value(which_table, old_value, new_value)
+    for k, v in pairs(which_table) do
+        if v == old_value then
+            which_table[k] = new_value
         end
     end
 end

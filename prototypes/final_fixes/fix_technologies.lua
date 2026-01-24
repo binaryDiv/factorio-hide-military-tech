@@ -19,3 +19,9 @@ if not utils.get_setting("hide-laser-turret") then
     utils.add_tech_prerequisite("laser-shooting-speed-1", "laser-turret")
     utils.add_tech_prerequisite("laser-weapons-damage-1", "laser-turret")
 end
+
+-- Remove some unneeded prerequisites if the Military science pack has been removed
+if utils.get_setting("remove-military-science-pack") then
+    -- Portable fission reactor: Uses military science pack, but shouldn't really need military technologies
+    utils.remove_tech_prerequisite("fission-reactor-equipment", "military-2")
+end
