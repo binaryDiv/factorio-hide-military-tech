@@ -1,4 +1,21 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 24. 01. 2026
+  Major Features:
+    - Add setting to remove military science pack from all technologies.
+    - Add setting to remove guns from vehicles.
+  Features:
+    - Add setting for tesla weapons (default: hidden as before).
+    - Technology effects (e.g. weapon damage bonus) for hidden ammo categories are hidden as well now.
+  Changes:
+    - Rename mod to "Hide Military Technologies" (dropping the "Unused" for brevity).
+    - "Laser shooting speed" and "Laser weapons damage" technologies now have "Laser turret" as prerequisite.
+    - Setting "Override: Show all" only affects hiding of prototypes, it does not disable the entire mod.
+  Compatibility:
+    - Compatibility for "AAI Vehicles: Ironclad": Hide mortar ammo.
+    - Compatibility for "AAI Vehicles: Warden": Hide electro bolter ammo.
+    - Mark "Pacifist" as incompatible since combining these mods does not make sense.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 21. 02. 2025
   Major Features:
