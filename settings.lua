@@ -29,4 +29,14 @@ data:extend({
     generate_startup_bool_setting("hide-shotguns", "c[hide-items]-c[shotguns]", true),
     generate_startup_bool_setting("hide-cluster-grenade", "c[hide-items]-d[cluster-grenade]", true),
     generate_startup_bool_setting("hide-handheld-railgun", "c[hide-items]-e[handheld-railgun]", true),
+
+    -- Whether to remove guns from vehicles (options: none, only those with hidden ammo, all guns)
+    {
+        setting_type = "startup",
+        type = "string-setting",
+        name = "hide-military-tech-remove-vehicle-guns",
+        order = "d[misc]-a[remove-vehicle-guns]",
+        allowed_values = {"no", "hidden", "all"},
+        default_value = "no",
+    },
 })

@@ -5,6 +5,16 @@ function utils.get_setting(name)
     return settings.startup["hide-military-tech-" .. name].value
 end
 
+-- Removes a value from a table (only once!)
+function utils.table_remove_value(which_table, value)
+    for k, v in pairs(which_table) do
+        if v == value then
+            table.remove(which_table, k)
+            return
+        end
+    end
+end
+
 -- Return a list of all technology prototypes matching the given name. If the name ends with "-#", find all technologies
 -- with "#" replaced by a number counting upwards (e.g. "weapon-shooting-speed-1", "-2", "-3", ...).
 -- If its a regular technology name, return a list with only that technology, or an empty list if it doesn't exist.
@@ -110,11 +120,28 @@ function utils.remove_tech_prerequisite(tech_name, prerequisite)
     local tech = data.raw.technology[tech_name]
 
     if tech and tech.prerequisites then
-        for index, item in pairs(tech.prerequisites or {}) do
-            if item == prerequisite then
-                table.remove(tech.prerequisites, index)
-                return
+        utils.table_remove_value(tech.prerequisites, prerequisite)
+    end
+end
+
+-- Remove guns from a vehicle. The guns parameter can be a list of gun prototype names or nil. If nil, all guns are
+-- removed, otherwise only the listed guns. If the last parameter is true, the vehicles turret sprite is removed too.
+function utils.remove_vehicle_guns(vehicle_type, vehicle_name, guns, remove_turret_animation)
+    local vehicle = data.raw[vehicle_type][vehicle_name]
+
+    if vehicle ~= nil and vehicle.guns ~= nil then
+        -- If guns parameter is nil, all guns should be removed, otherwise just selected guns
+        if guns == nil then
+            vehicle.guns = {}
+        else
+            for _, gun in pairs(guns) do
+                utils.table_remove_value(vehicle.guns, gun)
             end
+        end
+
+        -- Remove the turret sprite
+        if remove_turret_animation then
+            vehicle.turret_animation = nil
         end
     end
 end
