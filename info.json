@@ -11,6 +11,7 @@
         "base >= 2.0",
         "space-age >= 2.0",
         "(?) aai-vehicles-ironclad",
-        "(?) aai-vehicles-warden"
+        "(?) aai-vehicles-warden",
+        "! Pacifist"
     ]
 }
