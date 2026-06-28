@@ -261,7 +261,7 @@ definitions.submachine_gun = {
     gun = { "submachine-gun" },
 }
 
--- Shotgun (unlocked by Military 1) and Combat shotgun (unlocked by Military 3)
+-- Shotgun (unlocked by Military 1) and Combat shotgun (unlocked by Military 4)
 definitions.shotguns = {
     recipe = {
         "shotgun",
