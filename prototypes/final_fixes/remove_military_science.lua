@@ -33,3 +33,8 @@ if not utils.get_setting("override-show-all") then
         item = { "military-science-pack" },
     })
 end
+
+-- Remove military science pack input slots from all labs
+for _, lab in pairs(data.raw.lab) do
+    utils.table_remove_value(lab.inputs, "military-science-pack")
+end
